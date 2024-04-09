@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export function CreateTodo(props){
+export function CreateTodo(){
     const [title,setTitle]=useState("");
     const [description, setdescription]= useState("");
     return(
@@ -8,11 +8,9 @@ export function CreateTodo(props){
         <input 
          style={{padding:20, margin:20}}
          type="text" placeholder="title" onChange={function (e){
-            const value= e.target.value;
             setTitle(e.target.value)
         }}></input> <br/>
         <input type="text" placeholder="description" onChange={function (e){
-            const value= e.target.value;
             setdescription(e.target.value)
         }}></input> <br/>
         <button onClick={()=>{
@@ -27,7 +25,7 @@ export function CreateTodo(props){
                 }
             })
             .then(  async function(res){
-                const json =  await res.json();
+                 await res.json();
                 alert("todo added")
             })
         }}>Add todo</button>
