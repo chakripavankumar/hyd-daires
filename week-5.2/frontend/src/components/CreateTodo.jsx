@@ -1,12 +1,13 @@
 import { useState } from "react"
 
-export function CreateTodo(){
-    const [title,setTitle]=useState("")
-    const [description, setdescription]= useState("")
+export function CreateTodo(props){
+    const [title,setTitle]=useState("");
+    const [description, setdescription]= useState("");
     return(
         <div>
-
-        <input type="text" placeholder="title" onChange={function (e){
+        <input 
+         style={{padding:20, margin:20}}
+         type="text" placeholder="title" onChange={function (e){
             const value= e.target.value;
             setTitle(e.target.value)
         }}></input> <br/>
@@ -22,7 +23,7 @@ export function CreateTodo(){
                    description:description
                 }), 
                 headers:{
-                    "contentType":"application/json"
+                    "content-type":"application/json"
                 }
             })
             .then(  async function(res){
