@@ -10,10 +10,14 @@ export function CreateTodo(){
          type="text" placeholder="title" onChange={function (e){
             setTitle(e.target.value)
         }}></input> <br/>
-        <input type="text" placeholder="description" onChange={function (e){
+        <input 
+        style={{padding:20, margin:20}}
+        type="text" placeholder="description" onChange={function (e){
             setdescription(e.target.value)
         }}></input> <br/>
-        <button onClick={()=>{
+        <button 
+        style={{padding:20, margin:20}}
+         onClick={()=>{
             fetch("http://localhost:3000/todo" ,{
                 method:"POST",
                 body: JSON.stringify({
