@@ -1,44 +1,48 @@
-import React, { useState } from 'react'
-
+import React, { useState } from 'react';
 
 const App = () => {
+  const [todos, setTodos] = useState([
+    {
+      id: 0,
+      title: "Go to the gym",
+      description: "Maya gym ki vellu ra"
+    },
+    {
+      id: 1,
+      title: "Go to the gym",
+      description: "Maya gym ki vellu ra"
+    },
+    {
+      id: 2,
+      title: "Go to the gym",
+      description: "Maya gym ki vellu ra"
+    },
+  ]);
 
-
-
-  return (
-    <div>
-    <HeaderwithButton></HeaderwithButton>
-
-   <Header title="pavan mayaa"></Header>
-   <Header title="pavan mayaa"></Header>
-   <Header title="pavan mayaa"></Header>
-   
-  
-    </div>
-  )
-  
-}
-function HeaderwithButton(){
-  const [title,setTitle]=useState("maya nenu pavan");
-  function Updatetitle(){
-    setTitle("my nam  is" + Math.random())
+  function addTodo() {
+    const newTodo = {
+      id: Math.random(),
+      title: "New Todo",
+      description: "Description for new todo"
+    };
+    setTodos([...todos, newTodo]);
   }
-  return (
-    <div> <button onClick={Updatetitle}>Update the button</button>
-    <Header title={title}></Header></div>
- 
-  )
-}
-function Header({title}) {
+
   return (
     <div>
-      {title}
-      
+      <button onClick={addTodo}>Add a todo</button>
+      {todos.map(todo => <Todo key={todo.id} title={todo.title} description={todo.description} />)}
     </div>
-  )
+  );
 }
 
- 
+function Todo({ title, description }) {
+  return (
+    <div>
+      <h1>{title}</h1>
+      <h5>{description}</h5>
+    </div>
+  );
+}
 
-
-export default App
+export default App;
