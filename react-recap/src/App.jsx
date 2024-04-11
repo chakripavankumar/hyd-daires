@@ -1,17 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [exchangeData, setExchangeData] = useState({});
+  const [bankData, setBankData] = useState({});
+  console.log("hi there rendered");
+
+
+   useEffect(()=>{
+      setTimeout(()=>{
+        setBankData({income: 100})
+      },3000);
+   },[])
+  useEffect(()=>{
+    setTimeout(()=>{
+      setExchangeData({
+        return :100
+      });
+    },1000)
+  },[])
+  const incomeTax = (bankData.income + exchangeData) * 0.3;
 
   return (
-   <div>
-   <button onClick={()=>{
-    setCount(count +1)
-   }}> count is {count}</button>
-   </div>
+    <div>
+        hi there, your income tax returns are {incomeTax}
+    </div>
   )
 }
 
