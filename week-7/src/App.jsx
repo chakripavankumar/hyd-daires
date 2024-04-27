@@ -1,35 +1,44 @@
-import { useState } from "react"
+/* eslint-disable react/prop-types */
+import { useContext, useState } from "react"
+import { CountContext } from "./components/Counter";
 
 function App() {
- const [count,setCount]= useState(0)
-
+  const [count, setCount] = useState(0);
+  
   return (
-    <>
-      <Count count={count}/>
-      <Butoon count={count} setCount={setCount}/>
-    </>
+    <div>
+    <CountContext.Provider value={count}>
+      <Count count={count} setCount={setCount} />
+      </CountContext.Provider>
+    </div>
   )
 }
 
-
- function Count({count}) {
-  return (
-    <div>
-    {count}
-    </div>
-  )
- }
-  function Butoon ({count, setCount}){
- return (
-  <div>
-  <button onClick={()=>{
- setCount(count+1)
-  }}> INcrease </button>
-  <button onClick={()=>{
-  setCount(count -1)  }}>
-  Decrese
-  </button>
+function Count({setCount}) {
+  return <div>
+    <CountRenderer  />
+    <Buttons setCount={setCount} />
   </div>
- )
-  }
+}
+
+function CountRenderer() {
+  const count= useContext(CountContext)
+  return <div>
+    {count}
+  </div>
+}
+
+function Buttons({setCount}) {
+const count= useContext(CountContext);
+  return <div>
+    <button onClick={() => {
+      setCount(count + 1)
+    }}>Increase</button>
+
+    <button onClick={() => {
+      setCount(count - 1)
+    }}>Decrease</button>
+  </div>
+}
+
 export default App
