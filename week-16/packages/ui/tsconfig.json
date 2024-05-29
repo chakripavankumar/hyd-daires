@@ -3,6 +3,6 @@
   "compilerOptions": {
     "outDir": "dist"
   },
-  "include": ["src", "../../apps/web/app/admin"],
+  "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }
