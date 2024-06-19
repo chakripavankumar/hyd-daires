@@ -1,5 +1,5 @@
 import express from "express";
-import cookieParser from "cookie-parser"; // middelware that parse the cookies 
+import cookieParser from "cookie-parser"; 
 import cors from "cors";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import path from "path";
@@ -33,6 +33,7 @@ app.get("/user", (req, res) => {
         userId: decoded.id
     })
 });
+
 
 
 app.post("/logout", (req, res) => {
